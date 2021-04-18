@@ -1,15 +1,12 @@
-import React from 'react';
+import React from "react";
+import { useSelector } from "react-redux";
 
-export default class AppContainer extends React.Component {
+export default function AppContainer({ children }) {
+  const { isDarkMode } = useSelector((state) => state.mode);
 
-    render() {
-        const {children} = this.props;
-
-        return (
-            <div className="app-container">
-                {children}
-            </div>
-        );
-    }
-
+  return (
+      <div className={!isDarkMode ? "app-container" : "dark-mode"}>
+        {children}
+      </div>
+  );
 }
